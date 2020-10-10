@@ -1,4 +1,4 @@
-# GraphQL_Example_Kickstart
+# GraphQL Example Kickstart
 
 GraphQL Example using java-graphql-kickstart, spring boot and h2 database.
 
