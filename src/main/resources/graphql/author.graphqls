@@ -1,0 +1,19 @@
+extend type Query{
+    getAuthor(id: ID): Author
+}
+
+extend type Mutation{
+    createAuthor(input: CreateAuthorInput):Author
+}
+
+input CreateAuthorInput{
+    firstName: String
+    lastName: String
+}
+
+type Author {
+    id: ID
+    firstName: String
+    lastName: String
+    books: [Book]
+}
