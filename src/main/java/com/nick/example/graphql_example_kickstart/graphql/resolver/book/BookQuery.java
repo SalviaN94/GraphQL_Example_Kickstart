@@ -18,7 +18,7 @@ public class BookQuery extends Query {
         return bookService.getAllBooks();
     }
 
-    public Book getBookById(Long id){
+    public Book getBookById(String id){
         return bookService.getBook(id).get();
     }
 }

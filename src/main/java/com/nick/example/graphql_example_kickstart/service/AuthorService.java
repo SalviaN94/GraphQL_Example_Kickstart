@@ -31,7 +31,7 @@ public class AuthorService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Author> getAuthor(long id){
+    public Optional<Author> getAuthor(String id){
         return this.authorRepository.findById(id);
     }
 }

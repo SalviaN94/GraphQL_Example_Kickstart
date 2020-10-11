@@ -12,7 +12,7 @@ public class AuthorQuery extends Query {
     @Autowired
     AuthorService authorService;
 
-    public Author getAuthor(Long id){
+    public Author getAuthor(String id){
         return authorService.getAuthor(id).get();
     }
 }

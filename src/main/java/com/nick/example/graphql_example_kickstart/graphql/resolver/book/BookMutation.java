@@ -21,8 +21,8 @@ public class BookMutation extends Mutation {
         return bookService.updateBook(input);
     }
 
-    public Book deleteBook(Long id){
-        return bookService.deleteBook(id);
+    public Book deleteBook(Book book){
+        return bookService.deleteBook(book.getId());
     }
 
 }

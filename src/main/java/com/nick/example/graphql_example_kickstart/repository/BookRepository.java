@@ -1,9 +1,9 @@
 package com.nick.example.graphql_example_kickstart.repository;
 
 import com.nick.example.graphql_example_kickstart.entity.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface BookRepository extends JpaRepository<Book, Long> {
+public interface BookRepository extends MongoRepository<Book, String> {
 
     Book findByName(String name);
 }

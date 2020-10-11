@@ -1,29 +1,25 @@
 package com.nick.example.graphql_example_kickstart.entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-@Entity
 public class Book {
 
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
-    private Long id;
+    private String id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(name="page_count", nullable = false)
     private int pageCount;
 
-    @ManyToOne
+    @DBRef
     private Author author;
 
     protected Book(){
 
     }
 
-    public Book(Long id, String name, int pageCount) {
+    public Book(String id, String name, int pageCount) {
         this.id = id;
         this.name = name;
         this.pageCount = pageCount;
@@ -40,11 +36,11 @@ public class Book {
         this.author = author;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

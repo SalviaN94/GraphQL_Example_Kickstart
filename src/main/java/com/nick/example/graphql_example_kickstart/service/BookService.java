@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +21,8 @@ public class BookService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    @Autowired
-    private EntityManager em;
-
     @Transactional
-    public Book createBook(Book book, Long authorId){
+    public Book createBook(Book book, String authorId){
         Book existingBook = bookRepository.findByName(book.getName());
         if(existingBook != null) {
             return existingBook;
@@ -34,11 +30,10 @@ public class BookService {
         Author author = authorRepository.findAuthorById(authorId);
         if(author == null)
             return null;
-        author.addBooks(book);
         book.setAuthor(author);
-        em.persist(book);
-        em.flush();
-
+        bookRepository.save(book);
+        author.addBooks(book);
+        authorRepository.save(author);
         return book;
     }
 
@@ -49,7 +44,7 @@ public class BookService {
     }
 
     @Transactional
-    public Book deleteBook(long id){
+    public Book deleteBook(String id){
         Book book = this.bookRepository.findById(id).get();
         this.bookRepository.deleteById(id);
         return book;
@@ -61,7 +56,7 @@ public class BookService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Book> getBook(long id){
+    public Optional<Book> getBook(String id){
         return this.bookRepository.findById(id);
     }
 

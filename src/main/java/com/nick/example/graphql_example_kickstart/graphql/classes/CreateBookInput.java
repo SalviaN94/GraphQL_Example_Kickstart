@@ -2,11 +2,11 @@ package com.nick.example.graphql_example_kickstart.graphql.classes;
 
 public class CreateBookInput {
 
-    String name;
-    int pageCount;
-    Long authorId;
+    private String name;
+    private int pageCount;
+    private String authorId;
 
-    public CreateBookInput(String name, int pageCount, Long authorId) {
+    public CreateBookInput(String name, int pageCount, String authorId) {
         this.name = name;
         this.pageCount = pageCount;
         this.authorId = authorId;
@@ -28,11 +28,11 @@ public class CreateBookInput {
         this.pageCount = pageCount;
     }
 
-    public Long getAuthorId() {
+    public String getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(Long authorId) {
+    public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
 }

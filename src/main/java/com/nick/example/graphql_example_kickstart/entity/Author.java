@@ -1,25 +1,22 @@
 package com.nick.example.graphql_example_kickstart.entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
 public class Author {
 
     @Id
-    @Column(nullable = false)
-    @GeneratedValue
-    private Long id;
+    private String id;
 
-    @Column(name="first_name", nullable = false)
     private String firstName;
 
-    @Column(name="last_name", nullable = false)
     private String lastName;
 
-    @OneToMany(mappedBy = "author")
+    @DBRef
     private List<Book> books = new ArrayList<>();
 
     protected Author(){
@@ -31,11 +28,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
